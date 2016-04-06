@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ionicApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no,width=device-width">
+    <title>navExercise</title>
+    <link href="http://code.ionicframework.com/0.09.26/css/ionic.min.css" rel="stylesheet">
+    <script src="http://code.ionicframework.com/0.9.26/js/ionic.bundle.min.js"></script>
+</head>
+<body>
+
+<div ng-controller="mainCtrl">
+    <ion-nav-view animation="slide-left-right"></ion-nav-view>
+</div>
+
+<script id="menu.html" type="text/ng-template">
+    <ion-side-menus>
+        <ion-pane ion-side-menu-content>
+            <ion-nav-bar animation="nav-title-slide-ios7" type="bar-positive" left-buttons="leftButtons" back-button-type="button-icon" back-button-icon="ion-arrow-left-c"></ion-nav-bar>
+            <ion-nav-view name="menu-content"></ion-nav-view>
+        </ion-pane>
+        <ion-side-menu side="left">
+            <ion-content>
+                <ul class="list">
+                    <a href="#/main/tab/home" class="item" ng-click="mainCtrl.showFeature=false">Home</a>
+                    <a href="#/main/tab/about" class="item" ng-click="mainCtrl.showFeature=false">About</a>
+                    <a href="#/main/tab/contact" class="item" ng-click="mainCtrl.showFeature=false">Contact</a>
+                    <a href="#/main/tab/feature" class="item" ng-click="mianCtrl.showFeature=true"></a>
+                </ul>
+            </ion-content>
+        </ion-side-menu>
+    </ion-side-menus>
+</script>
+
+<script id="tabs.html" type="text/ng-template">
+    <ion-tabs tabs-style="tab-icon-top" tabs-type="tabs-positive">
+        <ion-tab title="Home" icon="icon-home" href="#/mian/tab/home">
+            <ion-nav-view name="home-tab"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="About" icon="ion-ios7-information" href="#/main/tab/about">
+            <ion-nav-view name="about-tab"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Contact" icon="ion-ios7-world" ui-sref="main.tabs.contact">
+            <ion-nav-view name="contact-tab"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Feature" icon="ion-ios7-world" ui-sref="main.tabs.feature" na-if="mainCtrl.showFeature">
+            <ion-nav-view name="feature-tab"></ion-nav-view>
+        </ion-tab>
+    </ion-tabs>
+</script>
+
+<script id="home.html" type="text/ng-template">
+    <ion-view title="Home" left-button="leftbuttons">
+        <ion-content has-header="true" padding="true">
+            <p>Example of Ionic tabs. Navigate to each tab, and
+                navigate to child views of each tab and notice how
+                each tab has its own navigation history.</p>
+            <p>
+                <a class="button icon icon-right icon-chevron-right" href="#/main/tab/facts">Scientific Facts</a>
+            </p>
+            <p>This next button navigates to a view that does not have a tab or present</p>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="facts.html" type="text/ng-template">
+    <ion-view title="'Facts'" left></ion-view>
+</script>
+</body>
+</html>
